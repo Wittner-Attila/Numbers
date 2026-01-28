@@ -26,14 +26,14 @@
         <Button Content="C" Grid.Column="0" Grid.Row="4" Click="CClicked"/>
         <Button Content="D" Grid.Column="4" Grid.Row="4" Click="DClicked"/>
         <Button Content="Reset" Grid.Column="2" Grid.Row="4" Click="Reset"/>
-        <Label Content="{Binding Numbers[0]}" Grid.Column="1" Grid.Row="1" />
-        <Label Content="{Binding Numbers[1]}" Grid.Column="2" Grid.Row="1" />
-        <Label Content="{Binding Numbers[2]}" Grid.Column="3" Grid.Row="1" />
-        <Label Content="{Binding Numbers[3]}" Grid.Column="1" Grid.Row="2" />
-        <Label Content="{Binding Numbers[4]}" Grid.Column="2" Grid.Row="2" />
-        <Label Content="{Binding Numbers[5]}" Grid.Column="3" Grid.Row="2" />
-        <Label Content="{Binding Numbers[6]}" Grid.Column="1" Grid.Row="3" />
-        <Label Content="{Binding Numbers[7]}" Grid.Column="2" Grid.Row="3" />
-        <Label Content="{Binding Numbers[8]}" Grid.Column="3" Grid.Row="3" />
+        <Label Content="{Binding Numbers[0]}" Grid.Column="1" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+        <Label Content="{Binding Numbers[1]}" Grid.Column="2" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+        <Label Content="{Binding Numbers[2]}" Grid.Column="3" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+        <Label Content="{Binding Numbers[3]}" Grid.Column="1" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+        <Label Content="{Binding Numbers[4]}" Grid.Column="2" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+        <Label Content="{Binding Numbers[5]}" Grid.Column="3" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+        <Label Content="{Binding Numbers[6]}" Grid.Column="1" Grid.Row="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+        <Label Content="{Binding Numbers[7]}" Grid.Column="2" Grid.Row="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+        <Label Content="{Binding Numbers[8]}" Grid.Column="3" Grid.Row="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
     </Grid>
 </Window>

@@ -17,6 +17,7 @@ public partial class MainWindow : Window
     public ObservableCollection<int> Numbers { get; private set; } =
         new ObservableCollection<int> { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
+
     public MainWindow()
     {
         InitializeComponent();
@@ -56,6 +57,9 @@ public partial class MainWindow : Window
     }
     public void Reset(object sender, RoutedEventArgs e)
     {
-        Numbers = new ObservableCollection<int>() { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        for (int i = 0; i < Numbers.Count; i++)
+        {
+            Numbers[i] = 0;
+        }
     }
 }

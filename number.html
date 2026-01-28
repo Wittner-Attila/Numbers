@@ -1,11 +1,122 @@
 <!doctype html>
-<html lang="en">
+<html lang="hu">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Number Game</title>
+        <title>Számnégyes Kezelő</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background: #002946;
+                color: white;
+                padding: 30px;
+            }
+
+            h1 {
+                text-align: center;
+            }
+
+            .card {
+                background: #135675;
+                padding: 20px;
+                margin: 20px 0;
+                border-radius: 10px;
+            }
+
+            input {
+                padding: 8px;
+                margin: 5px;
+                width: 60px;
+                border-radius: 5px;
+                border: none;
+                text-align: center;
+            }
+
+            button {
+                padding: 10px 15px;
+                border: none;
+                border-radius: 6px;
+                background: #5cbeff;
+                color: white;
+                cursor: pointer;
+            }
+
+            button:hover {
+                background: #79d5ff;
+            }
+
+            pre {
+                background: black;
+                min-height: 60px;
+                max-height: 300px;
+                padding: 10px;
+                border-radius: 6px;
+                overflow-x: auto;
+            }
+        </style>
     </head>
     <body>
-        
+        <h1>Számnégyes Nyilvántartó</h1>
+
+        <div class="card">
+            <h2>Új számnégyes rögzítése</h2>
+            <input type="number" id="n1" value="0" />
+            <input type="number" id="n2" value="0" />
+            <input type="number" id="n3" value="0" />
+            <input type="number" id="n4" value="0" />
+            <button onclick="addFours()">Mentés</button>
+            <p id="createResult"></p>
+        </div>
+
+        <div class="card">
+            <h2>Összes számnégyes</h2>
+            <button onclick="getAll()">Lekérdezés</button>
+            <pre id="allResult"></pre>
+        </div>
+
+        <div class="card">
+            <h2>Lekérdezés ID alapján</h2>
+            <input type="number" id="searchId" placeholder="ID" />
+            <button onclick="getOne()">Keresés</button>
+            <pre id="oneResult"></pre>
+        </div>
+
+        <script>
+            const API = 'http://localhost:3033/fours';
+
+            async function addFours() {
+                const numbers = [
+                    Number(n1.value),
+                    Number(n2.value),
+                    Number(n3.value),
+                    Number(n4.value),
+                ];
+
+                const res = await fetch(API, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ fours: numbers }),
+                });
+
+                const data = await res.json();
+                createResult.textContent = data.message || 'Hiba történt';
+                n1.value = 0;
+                n2.value = 0;
+                n3.value = 0;
+                n4.value = 0;
+            }
+
+            async function getAll() {
+                const res = await fetch(API);
+                const data = await res.json();
+                allResult.textContent = JSON.stringify(data, null, 2);
+            }
+
+            async function getOne() {
+                const id = searchId.value;
+                const res = await fetch(`${API}/${id}`);
+                const data = await res.json();
+                oneResult.textContent = JSON.stringify(data, null, 2);
+            }
+        </script>
     </body>
 </html>
